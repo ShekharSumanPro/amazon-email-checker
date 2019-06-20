@@ -107,7 +107,10 @@ $climate->br();
 
 // do check until emailist 0
 do {
+    if (filesize($emailist) === 0) {
+        die(rezProgress($emailist,$req,$delay));
+    }
     chk($emailist,$req);
     rezProgress($emailist,$req,$delay);
     sleep($delay);
-} while (filesize($emailist) != 0);
+} while (1);
