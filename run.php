@@ -106,11 +106,8 @@ $delay = $climate->input('[+] Delay ?')->prompt();
 $climate->br();
 
 // do check until emailist 0
-do {
-    if (filesize($emailist) === 0) {
-        die(rezProgress($emailist,$req,$delay));
-    }
+while (count(file($emailist)) !== 0 ) {
     chk($emailist,$req);
     rezProgress($emailist,$req,$delay);
     sleep($delay);
-} while (1);
+}
